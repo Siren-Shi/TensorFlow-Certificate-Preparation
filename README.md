@@ -9,3 +9,5 @@ This is just to show my material and excercises implemented following the constr
 This repository is dependent on TensorFlow 2.x based on Google Colab online platform. 
 In this course, I used the free GPU service available from Coogle Colab to accelerate the model training process, 
 while I am challenged by the fact of no GPU Pro+ service is provided in my region (currently the Netherlands).
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Siren-Shi/deepbedmap/]
