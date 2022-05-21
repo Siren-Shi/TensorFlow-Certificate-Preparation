@@ -9,6 +9,8 @@ This is just to show my material and excercises implemented following the constr
 4. Natural Language Processing (NLP)
 5. Time series, sequences and predictions
 
+You can find my progress through the badge above.
+
 This repository is dependent on TensorFlow 2.x based on Google Colab online platform. 
 In this course, I used the free GPU service available from Coogle Colab to accelerate the model training process, 
 while I am challenged by the fact of no GPU Pro+ service is provided in my region (currently the Netherlands).
