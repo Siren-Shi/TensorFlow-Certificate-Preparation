@@ -1,6 +1,6 @@
 # TensorFlow-Certificate-Preparation
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jinglan-shi/deepbedmap/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jinglan-shi/TensorFlow-Certificate-Preparation/)
 
 This is just to show my material and excercises implemented following the construction of Zero to Mastery TensorFlow for Deep Learning as a preparation for Google TensorFlow Developer Certificate, which mainly covers the following topics:
 1. TensorFlow developer skills
