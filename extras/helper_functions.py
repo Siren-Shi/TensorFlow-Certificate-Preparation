@@ -370,3 +370,30 @@ def calculate_results(y_true, y_pred):
                   "f1": model_f1}
   return model_results
 
+# Function to extract random images from dataset and visualize it to see if the prediction is correct.
+def predict_and_visualize(model, target_class, directory=train_dir):
+  """
+  Make predictions with the trained model and plot the extracted images to check if the predictions are 
+  in line with the ground truth label.
+  
+  Args:
+    model: the trained model with which you will make predictions.
+    target_class (str): the category you want to extract images from.
+    directory: path to the directory of any of your datasets (train/validation/test).
+  """
+  target_dir = directory + '/' + target_class
+  imgs = random.sample(os.listdir(target_dir), 9)
+  plt.figure(figsize=(10, 10))
+  plt.suptitle(f'Label: {target_class}')
+  for img in imgs:
+    plt.subplot(3, 3, imgs.index(img)+1)
+    img = mpimg.imread(target_dir + '/' + img)
+    img = tf.image.resize(img, (224, 224))
+    plt.imshow(img/255.)
+    pred = class_names[tf.argmax(model.predict(tf.expand_dims(img, axis=0))[0])]
+    if pred == target_class:
+      color = 'g'
+    else:
+      color = 'r'
+    plt.title(f'Prediction: {pred}', c=color)
+    plt.axis('off')
