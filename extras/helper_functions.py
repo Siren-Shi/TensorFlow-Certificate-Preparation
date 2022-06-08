@@ -400,6 +400,10 @@ def predict_and_visualize(model, target_class, directory):
 
     
 # Randomly extract 3 images from a target directory and visualize them.
+import random
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
 def view_random_image(target_class, directory):
   """
   Randomly extract 3 images from the specified directory of the dataset and visualize the images.
