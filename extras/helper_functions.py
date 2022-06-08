@@ -371,7 +371,7 @@ def calculate_results(y_true, y_pred):
   return model_results
 
 # Function to extract random images from dataset and visualize it to see if the prediction is correct.
-def predict_and_visualize(model, target_class, directory=train_dir):
+def predict_and_visualize(model, target_class, directory):
   """
   Make predictions with the trained model and plot the extracted images to check if the predictions are 
   in line with the ground truth label.
