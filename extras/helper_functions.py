@@ -397,3 +397,23 @@ def predict_and_visualize(model, target_class, directory):
       color = 'r'
     plt.title(f'Prediction: {pred}', c=color)
     plt.axis('off')
+
+    
+# Randomly extract 3 images from a target directory and visualize them.
+def view_random_image(target_class, directory):
+  """
+  Randomly extract 3 images from the specified directory of the dataset and visualize the images.
+  
+  Args:
+    target_class (str): The category of the dataset specified by users to extract images from.
+    directory: target_class (str): path to the directory of any of your datasets (train/validation/test).
+  """
+  target_dir = directory + target_class
+  images = random.sample(os.listdir(target_dir), 3)
+  plt.figure(figsize=(15, 5))
+  for img in images:
+    plt.subplot(1, 3, images.index(img)+1)
+    img = mpimg.imread(target_dir + '/' + img)
+    plt.imshow(img)
+    plt.title(target_class)
+    plt.axis(False)
