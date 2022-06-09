@@ -391,7 +391,6 @@ def predict_and_visualize(model, target_class, directory, class_names=class_name
     model: the trained model with which you will make predictions.
     target_class (str): the category you want to extract images from.
     directory: path to the directory of any of your datasets (train/validation/test).
-    class_names (list): The list of all categories of the dataset of interest.
   """
   target_dir = directory + '/' + target_class
   imgs = random.sample(os.listdir(target_dir), 9)
