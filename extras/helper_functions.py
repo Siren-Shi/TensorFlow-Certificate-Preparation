@@ -67,8 +67,8 @@ class OneCycleScheduler(tf.keras.callbacks.Callback):
         self.iteration += 1
         K.set_value(self.model.optimizer.learning_rate, rate)
 
+        
 import numpy as np
-
 def plot_decision_boundary(model, X, y):
   """
   Plots the decision boundary created by a model predicting on X.
@@ -103,13 +103,13 @@ def plot_decision_boundary(model, X, y):
   plt.xlim(xx.min(), xx.max())
   plt.ylim(yy.min(), yy.max())
 
+    
 # Note: The following confusion matrix code is a remix of Scikit-Learn's 
 # plot_confusion_matrix function - https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_confusion_matrix.html
 import itertools
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.metrics import confusion_matrix
-
 # Our function needs a different name to sklearn's plot_confusion_matrix
 def make_confusion_matrix(y_true, y_pred, classes=None, figsize=(10, 10), text_size=15, norm=False, savefig=False): 
   """Makes a labelled confusion matrix comparing predictions and ground truth labels.
@@ -186,6 +186,7 @@ def make_confusion_matrix(y_true, y_pred, classes=None, figsize=(10, 10), text_s
   if savefig:
     fig.savefig("confusion_matrix.png")
 
+    
 # Create a function to import an image and resize it to be able to be used with our model
 def load_and_prep_image(filename, img_shape=224, scale=True):
   """
@@ -209,6 +210,7 @@ def load_and_prep_image(filename, img_shape=224, scale=True):
   else:
     return img
 
+
 def pred_and_plot(model, filename, class_names):
   """
   Imports an image located at filename, makes a prediction on it with
@@ -231,6 +233,7 @@ def pred_and_plot(model, filename, class_names):
   plt.title(f"Prediction: {pred_class}")
   plt.axis(False);
 
+    
 # Plot loss curves base on the model's training history
 def plot_loss_curves(history):
   """
@@ -262,8 +265,8 @@ def plot_loss_curves(history):
   plt.title('Accuracy')
   plt.legend()
 
+    
 import datetime
-
 def create_tensorboard_callback(dir_name, experiment_name):
   """
   Creates a TensorBoard callback instand to store log files.
@@ -280,10 +283,10 @@ def create_tensorboard_callback(dir_name, experiment_name):
   print(f"Saving TensorBoard log files to: {log_dir}")
   return tensorboard_callback
 
+
 # Walk through an image classification directory and find out how many files (images)
 # are in each subdirectory.
 import os
-
 def walk_through_dir(dir_path):
   """
   Walks through dir_path returning its contents.
@@ -299,6 +302,7 @@ def walk_through_dir(dir_path):
   for dirpath, dirnames, filenames in os.walk(dir_path):
     print(f"There are {len(dirnames)} directories and {len(filenames)} images in '{dirpath}'.")
 
+    
 def compare_historys(original_history, new_history, initial_epochs=5):
     """
     Compares two TensorFlow model History objects.
@@ -343,8 +347,8 @@ def compare_historys(original_history, new_history, initial_epochs=5):
     plt.xlabel('epoch')
     plt.show()
 
+    
 import zipfile
-
 def unzip_data(filename):
   """
   Unzips filename into the current working directory.
@@ -357,7 +361,6 @@ def unzip_data(filename):
 
 # Function to evaluate: accuracy, precision, recall, f1-score
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
-
 def calculate_results(y_true, y_pred):
   """
   Calculates model accuracy, precision, recall and f1 score of a binary classification model.
@@ -375,6 +378,7 @@ def calculate_results(y_true, y_pred):
                   "recall": model_recall,
                   "f1": model_f1}
   return model_results
+
 
 # Function to extract random images from dataset and visualize it to see if the prediction is correct.
 import os
@@ -397,12 +401,13 @@ def predict_and_visualize(model, target_class, directory, class_names=class_name
     img = mpimg.imread(target_dir + '/' + img)
     img = tf.image.resize(img, (224, 224))
     plt.imshow(img/255.)
+    pred_prob = model.predict(tf.expand_dims(img, axis=0))
     pred = class_names[tf.argmax(model.predict(tf.expand_dims(img, axis=0))[0])]
     if pred == target_class:
       color = 'g'
     else:
       color = 'r'
-    plt.title(f'Prediction: {pred}', c=color)
+    plt.title(f'Prediction: {pred}\nProbability: {pred_prob.max():.2f}', c=color)
     plt.axis('off')
 
     
@@ -410,6 +415,7 @@ def predict_and_visualize(model, target_class, directory, class_names=class_name
 import random
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+
 
 def view_random_image(target_class, directory):
   """
