@@ -391,6 +391,7 @@ def predict_and_visualize(model, target_class, directory, class_names=class_name
     model: the trained model with which you will make predictions.
     target_class (str): the category you want to extract images from.
     directory: path to the directory of any of your datasets (train/validation/test).
+    class_names (list): The list of all categories of the dataset of interest.
   """
   target_dir = directory + '/' + target_class
   imgs = random.sample(os.listdir(target_dir), 9)
@@ -434,3 +435,23 @@ def view_random_image(target_class, directory):
     plt.imshow(img)
     plt.title(target_class)
     plt.axis(False)
+
+    
+def plot_wrong_pred_img(dataframe, start_index, imgs_to_view=9):
+  """
+  Show the most wrong predictions on test images which has high prediction confidence.
+
+  Args:
+    dataframe (Pandas DataFrame): The dataframe of interest with images from which you make predictions on.
+    start_index (int): The starting index of the dataframe's rows.
+    imgs_to_view (int): The number of images you want to examine.
+  """
+  plt.figure(figsize=(15, 10))
+  for i, row in enumerate(dataframe[start_index:start_index+imgs_to_view].itertuples()):
+    plt.subplot(3, 3, i+1)
+    img = load_and_prep_image(row[1], scale=False)
+    _, _, _, _, pred_conf, y_true_classname, y_pred_classname, _ = row
+    plt.imshow(img/255.)
+    plt.title(f'Actural: {y_true_classname}\nPrediction: {y_pred_classname}\nProbability: {pred_conf}')
+    plt.axis('off')
+  plt.tight_layout()
