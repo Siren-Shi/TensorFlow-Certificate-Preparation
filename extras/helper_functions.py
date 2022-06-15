@@ -454,3 +454,34 @@ def plot_wrong_pred_img(dataframe, start_index, imgs_to_view=9):
     plt.title(f'Actural: {y_true_classname}\nPrediction: {y_pred_classname}\nProbability: {pred_conf}')
     plt.axis('off')
   plt.tight_layout()
+
+
+def predict_and_visualize_tfds(model, dataset, class_names):
+  """
+  Make predictions with the trained model and plot the extracted images to check if the predictions are 
+  in line with the ground truth label.
+  
+  Args:
+    model: the trained model with which you will make predictions.
+    dataset (tf.data.Dataset object): the dataset (train/val/test) you want to extract images from.
+    class_names: a list of category names used in the model.
+  """
+  for images, labels in test_data.take(1):
+    imgs = images[:9].numpy()
+    labs = labels[:9].numpy()
+  
+  plt.figure(figsize=(10, 10))
+  for index, (img, lab) in enumerate(zip(imgs, labs)):
+    plt.subplot(3, 3, index+1)
+    img = tf.image.resize(img, (224, 224))
+    plt.imshow(img/255.)
+    pred_prob = model.predict(tf.expand_dims(img, axis=0))
+    pred = tf.argmax(model.predict(tf.expand_dims(img, axis=0))[0])
+    if pred == lab:
+      color = 'g'
+    else:
+      color = 'r'
+    pred_class_name = class_names[tf.argmax(model.predict(tf.expand_dims(img, axis=0))[0])]
+    plt.title(f'True label: {class_names[lab]}\nPrediction: {pred_class_name}\nProbability: {pred_prob.max():.2f}', c=color)
+    plt.axis('off')
+  plt.tight_layout()
