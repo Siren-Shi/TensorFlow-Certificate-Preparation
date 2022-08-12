@@ -2,12 +2,12 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jinglan-shi/TensorFlow-Certificate-Preparation/)
 
-This is just to show my material and excercises implemented following the construction of Zero to Mastery TensorFlow for Deep Learning as a preparation for Google TensorFlow Developer Certificate, which mainly covers the following topics:
-1. TensorFlow developer skills
-2. Building and training Neural Network Models using TensorFlow 2.x
-3. Image Classification
-4. Natural Language Processing (NLP)
-5. Time series, sequences and predictions
+This is just to show my material and excercises implemented following the construction of [Zero to Mastery TensorFlow for Deep Learning](https://www.udemy.com/course/tensorflow-developer-certificate-machine-learning-zero-to-mastery/) as a preparation for Google TensorFlow Developer Certificate, which mainly covers the following topics:
+1. **TensorFlow developer skills**
+2. **Building and training Neural Network Models using TensorFlow 2.x**
+3. **Computer Vision (Image Classification)**
+4. **Natural Language Processing (NLP)**
+5. **Time series, sequences and predictions**
 
 You can find my progress through the badge above.
 
