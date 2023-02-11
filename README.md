@@ -1,5 +1,11 @@
 # TensorFlow-Certificate-Preparation
 
+## Updates:
+
+I passed the example and got the [TensorFlow Developer Certificate](https://www.credential.net/54a119ef-4f74-4f8d-90c2-adcd4a2b0126#gs.p7wp1k)!!!
+
+Hard work pays off.
+
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jinglan-shi/TensorFlow-Certificate-Preparation/)
 
 This is just to show my material and excercises implemented following the construction of [Zero to Mastery TensorFlow for Deep Learning](https://www.udemy.com/course/tensorflow-developer-certificate-machine-learning-zero-to-mastery/) as a preparation for Google TensorFlow Developer Certificate, which mainly covers the following topics:
